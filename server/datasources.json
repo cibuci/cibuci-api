@@ -1,6 +1,28 @@
 {
   "db": {
+    "host": "127.0.0.1",
+    "port": 27017,
+    "database": "cibuci",
     "name": "db",
-    "connector": "memory"
+    "connector": "mongodb"
+  },
+  "mailgun": {
+    "name": "mailgun",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "smtp.mailgun.org",
+        "secure": true,
+        "port": 465,
+        "tls": {
+          "rejectUnauthorized": false
+        },
+        "auth": {
+          "user": "aaa",
+          "pass": "bbb"
+        }
+      }
+    ]
   }
 }
