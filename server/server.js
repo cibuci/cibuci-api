@@ -24,6 +24,10 @@ remotes.after('*.find', function(ctx, next) {
   }
 });
 
+app.use('/robots.txt', function(req, res, next) {
+  res.send('Disallow: /');
+});
+
 app.start = function() {
   // start the web server
   return app.listen(function() {

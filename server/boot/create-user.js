@@ -6,11 +6,12 @@ module.exports = function(app) {
   var RoleMapping = app.models.RoleMapping;
 
   User.create([
-    {username: 'wayne', email: 'wayne@cibuci.com', password: 'ilovecibuci'},
     {username: 'bella', email: 'mi@cibuci.com', password: 'ilovecibuci'},
-    {username: 'zicong', email: 'zhangzicong@cibuci.com', password: 'ilovecibuci'},
   ], function(err, users) {
-    if (err) throw err;
+    if (err) {
+      console.log('created user fail, seems already created.');
+      return;
+    }
 
     console.log('Created users:', users);
 
@@ -22,7 +23,7 @@ module.exports = function(app) {
 
       console.log('Created role:', role);
 
-      // make wayne, bella, zicong as admin
+      // make bella an admin
       role.principals.create([
         {principalType: RoleMapping.USER, principalId: users[0].id},
       ], function(err, principals) {
