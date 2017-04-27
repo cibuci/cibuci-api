@@ -2,6 +2,11 @@
 
 This api built by [loopback](https://loopback.io/doc/en/lb3/index.html) 3.0.
 
+## Usage
+- clone this repo.
+- `npm install`
+- `node .`
+
 ## Special
 
 - `X-Total-Count` (cibuci-admin need this field)
