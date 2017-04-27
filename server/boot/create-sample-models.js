@@ -17,9 +17,9 @@ module.exports = function(app) {
 
   // create reviewers
   function createArticles(cb) {
-    mongoDataSource.automigrate('Article', function(err) {
+    mongoDataSource.automigrate('article', function(err) {
       if (err) return cb(err);
-      var Article = app.models.Article;
+      var Article = app.models.article;
       Article.create([{
         title: '123',
         content: '123',

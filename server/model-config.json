@@ -39,7 +39,7 @@
   "Email": {
     "dataSource": "mailgun"
   },
-  "Article": {
+  "article": {
     "dataSource": "db",
     "public": true
   },

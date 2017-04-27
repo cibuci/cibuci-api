@@ -7,14 +7,14 @@
   "relations": {
     "authors": {
       "type": "hasMany",
-      "model": "Article",
+      "model": "article",
       "foreignKey": "authorId"
     }
   },
   "acls": [
     {
       "principalType": "ROLE",
-      "principalId": "$everyone",
+      "principalId": "admin",
       "accessType": "READ",
       "permission": "ALLOW"
     }
