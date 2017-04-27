@@ -1,9 +1,11 @@
+'use strict';
+
 var async = require('async');
 
 module.exports = function(app) {
   var mongoDataSource = app.dataSources.db;
 
-  //create all models
+  // create all models
   async.parallel({
     articles: async.apply(createArticles),
   }, function(err, results) {
@@ -13,7 +15,7 @@ module.exports = function(app) {
     });
   });
 
-  //create reviewers
+  // create reviewers
   function createArticles(cb) {
     mongoDataSource.automigrate('Article', function(err) {
       if (err) return cb(err);
@@ -34,7 +36,7 @@ module.exports = function(app) {
     });
   }
 
-  //create reviews
+  // create reviews
   function createComments(articles, cb) {
     console.log(articles);
     cb();

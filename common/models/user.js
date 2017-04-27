@@ -2,12 +2,13 @@
 // Node module: loopback-example-user-management
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
+'use strict';
 
 var config = require('../../server/config.json');
 var path = require('path');
 
 module.exports = function(User) {
-  //send verification email after registration
+  // send verification email after registration
   // User.afterRemote('create', function(context, user, next) {
   //   console.log('> user.afterRemote triggered');
   //
@@ -39,7 +40,7 @@ module.exports = function(User) {
   //   });
   // });
 
-  //send password reset link when requested
+  // send password reset link when requested
   // User.on('resetPasswordRequest', function(info) {
   //   var url = 'http://' + config.host + ':' + config.port + '/reset-password';
   //   var html = 'Click <a href="' + url + '?access_token=' +
