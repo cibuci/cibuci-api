@@ -7,6 +7,8 @@ var app = module.exports = loopback();
 
 var remotes = app.remotes();
 
+var util_router = require('./routers/util.js');
+
 // Set X-Total-Count for all search requests
 remotes.after('*.find', function(ctx, next) {
   var filter;
@@ -27,6 +29,10 @@ remotes.after('*.find', function(ctx, next) {
 app.use('/robots.txt', function(req, res, next) {
   res.send('Disallow: /');
 });
+
+console.log(util_router);
+
+app.use('/util',util_router.router);
 
 app.start = function() {
   // start the web server
