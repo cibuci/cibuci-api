@@ -36,7 +36,7 @@
       "type" : "hasMany",
       "model": "topicComment",
       "foreignKey": "commentIds"
-    },
+    }
   },
   "acls": [
     {

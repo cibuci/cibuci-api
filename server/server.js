@@ -30,8 +30,6 @@ app.use('/robots.txt', function(req, res, next) {
   res.send('Disallow: /');
 });
 
-console.log(util_router);
-
 app.use('/util',util_router.router);
 
 app.start = function() {
