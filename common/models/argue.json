@@ -1,5 +1,5 @@
 {
-  "name": "article",
+  "name": "argue",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -11,17 +11,25 @@
       "required": true,
       "default": "untitled"
     },
-    "content": {
-      "type": "string"
+    "positivePiont": {
+      "type": "string",
+      "required": true,
+      "default": "untitled"
     },
-    "summary": {
-      "type": "string"
+    "positiveCount": {
+      "type": "number",
+      "required": true,
+      "default": 0
     },
-    "cover": {
-      "type": "string"
+    "negativePiont": {
+      "type": "string",
+      "required": true,
+      "default": "untitled"
     },
-    "readCount": {
-      "type": "number"
+    "negativeCount": {
+      "type": "number",
+      "required": true,
+      "default": 0
     },
     "createdAt": {
       "type": "date",
@@ -34,13 +42,7 @@
       "type": "belongsTo",
       "model": "user",
       "foreignKey": "authorId"
-    },
-    "fans":{
-      "type":"hasMany",
-      "model": "user",
-      "foreignKey": "fansIds"
     }
-
   },
   "acls": [
     {

@@ -13,11 +13,11 @@
   },
   "acls": [
     {
+      "accessType": "READ",
       "principalType": "ROLE",
       "principalId": "admin",
-      "accessType": "READ",
       "permission": "ALLOW"
     }
   ],
-  "methods": []
+  "methods": {}
 }

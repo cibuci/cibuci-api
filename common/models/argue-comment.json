@@ -1,0 +1,47 @@
+{
+  "name": "argueComment",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "piont":{
+      "type":"string",
+      "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "praise":{
+      "type":"hasMany",
+      "model": "user",
+      "foreignKey": "praiseIds"
+    },
+    "blame":{
+      "type":"hasMany",
+      "model": "user",
+      "foreignKey": "blameIds"
+    },
+    "author": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "authorId"
+    },
+    "replay":{
+      "type": "hasOne",
+      "model": "user",
+      "foreignKey": "replayId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

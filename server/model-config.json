@@ -43,11 +43,27 @@
     "dataSource": "db",
     "public": true
   },
+  "topic": {
+    "dataSource": "db",
+    "public": true
+  },
+  "argue": {
+    "dataSource": "db",
+    "public": true
+  },
   "user": {
     "dataSource": "db",
     "public": true,
     "options": {
       "emailVerificationRequired": false
     }
+  },
+  "argueComment": {
+    "dataSource": "db",
+    "public": true
+  },
+  "topicComment": {
+    "dataSource": "db",
+    "public": true
   }
 }

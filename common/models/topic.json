@@ -1,5 +1,5 @@
 {
-  "name": "article",
+  "name": "topic",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -11,17 +11,11 @@
       "required": true,
       "default": "untitled"
     },
+    "tab": {
+      "type": "string"
+    },
     "content": {
       "type": "string"
-    },
-    "summary": {
-      "type": "string"
-    },
-    "cover": {
-      "type": "string"
-    },
-    "readCount": {
-      "type": "number"
     },
     "createdAt": {
       "type": "date",
@@ -34,13 +28,7 @@
       "type": "belongsTo",
       "model": "user",
       "foreignKey": "authorId"
-    },
-    "fans":{
-      "type":"hasMany",
-      "model": "user",
-      "foreignKey": "fansIds"
     }
-
   },
   "acls": [
     {
