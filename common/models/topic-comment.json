@@ -22,6 +22,11 @@
   },
   "validations": [],
   "relations": {
+    "topic":{
+      "type":"belongsTo",
+      "model": "topic",
+      "foreignKey":"topicId"
+    },
     "praise":{
       "type":"hasMany",
       "model": "user",

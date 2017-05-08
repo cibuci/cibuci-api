@@ -21,6 +21,11 @@
   },
   "validations": [],
   "relations": {
+    "argue":{
+      "type":"belongsTo",
+      "model": "argue",
+      "foreignKey":"argueId"
+    },
     "praise":{
       "type":"hasMany",
       "model": "user",
