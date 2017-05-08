@@ -42,6 +42,11 @@
       "type": "belongsTo",
       "model": "user",
       "foreignKey": "authorId"
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "argueComment",
+      "foreignKey": "commentIds"
     }
   },
   "acls": [
