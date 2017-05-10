@@ -18,6 +18,9 @@
       "type": "hasOne",
       "model": "user",
       "foreignKey": "replayId"
+    },
+    "rank":{
+      "type":"number"
     }
   },
   "validations": [],

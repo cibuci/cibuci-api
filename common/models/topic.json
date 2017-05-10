@@ -20,6 +20,15 @@
     "commentsCount":{
       "type":"number"
     },
+    "lastReplyAt":{
+      "type": "date"
+    },
+    "rank":{
+      "type":"number"
+    },
+    "mark":{
+      "type": "string"
+    },
     "createdAt": {
       "type": "date",
       "required": true

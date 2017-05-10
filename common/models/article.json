@@ -23,6 +23,19 @@
     "readCount": {
       "type": "number"
     },
+    "published":{
+      "type": "boolean",
+      "default": false
+    },
+    "sourceName":{
+      "type": "string"
+    },
+    "sourceUrl":{
+      "type": "string"
+    },
+    "rank":{
+      "type":"number"
+    },
     "createdAt": {
       "type": "date",
       "required": true

@@ -14,6 +14,9 @@
       "type":"string",
       "required": true
     },
+    "rank":{
+      "type":"number"
+    },
     "createdAt": {
       "type": "date",
       "required": true
