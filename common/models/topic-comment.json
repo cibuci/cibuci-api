@@ -14,11 +14,6 @@
       "type": "date",
       "required": true
     },
-    "replay":{
-      "type": "hasOne",
-      "model": "user",
-      "foreignKey": "replayId"
-    },
     "rank":{
       "type":"number"
     }
@@ -29,6 +24,11 @@
       "type":"belongsTo",
       "model": "topic",
       "foreignKey":"topicId"
+    },
+    "replay":{
+      "type": "hasOne",
+      "model": "user",
+      "foreignKey": "replayId"
     },
     "praise":{
       "type":"hasMany",
