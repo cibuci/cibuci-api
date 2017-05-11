@@ -16,7 +16,7 @@ module.exports = function(Arguecomment) {
 		var Argue = app.models.Argue;
 
 		Argue.findById(comment.argueId,{},function(err, argue){
-			data = {};
+			var data = {};
 			if(comment.point=='positive'){
 				data['positiveCount'] = argue.positiveCount+1;
 			}else{
