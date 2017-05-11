@@ -2,7 +2,18 @@
   "name": "user",
   "base": "User",
   "idInjection": true,
-  "properties": {},
+  "properties": {
+    "nickName": {
+      "type": "string"
+    },
+    "avatarUrl": {
+      "type": "string"
+    },
+    "stauts": {
+      "type": "number",// 0 正常 -1 禁言  ...
+      "default": 0
+    }
+  },
   "validations": [],
   "relations": {
     "authors": {
