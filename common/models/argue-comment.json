@@ -10,7 +10,7 @@
       "type": "string",
       "required": true
     },
-    "piont":{
+    "point":{
       "type":"string",
       "required": true
     },
