@@ -21,7 +21,9 @@
       "type": "string"
     },
     "readCount": {
-      "type": "number"
+      "type": "number",
+      "required": true,
+      "default": 0
     },
     "published":{
       "type": "boolean",
