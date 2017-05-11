@@ -10,7 +10,7 @@
       "type": "string"
     },
     "stauts": {
-      "type": "number",// 0 正常 -1 禁言  ...
+      "type": "number",
       "default": 0
     }
   },
