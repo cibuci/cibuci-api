@@ -15,7 +15,9 @@
       "required": true
     },
     "rank":{
-      "type":"number"
+      "type":"number",
+      "required": true,
+      "default": 0
     },
     "createdAt": {
       "type": "date",

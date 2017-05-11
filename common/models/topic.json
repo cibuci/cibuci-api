@@ -18,13 +18,17 @@
       "type": "string"
     },
     "commentsCount":{
-      "type":"number"
+      "type": "number",
+      "required": true,
+      "default": 0
     },
     "lastReplyAt":{
       "type": "date"
     },
     "rank":{
-      "type":"number"
+      "type":"number",
+      "required": true,
+      "default": 0
     },
     "mark":{
       "type": "string"
