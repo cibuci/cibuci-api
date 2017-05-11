@@ -14,8 +14,17 @@ module.exports = function(Arguecomment) {
 
 	Arguecomment.afterRemote('create',function(context, comment, next){
 		var Argue = app.models.Argue;
+
 		Argue.findById(comment.argueId,{},function(err, argue){
-			
+			data = {};
+			if(comment.point=='positive'){
+				data['positiveCount'] = argue.positiveCount+1;
+			}else{
+				data['negativeCount'] = argue.negativeCount+1;
+			}
+			argue.updateAttributes(data,function(err,instance){
+				next();
+			});
 		});
 	});
 };
