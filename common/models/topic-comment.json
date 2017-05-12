@@ -14,33 +14,28 @@
       "type": "date",
       "required": true
     },
-    "rank":{
-      "type":"number",
+    "rank": {
+      "type": "number",
       "required": true,
       "default": 0
     }
   },
   "validations": [],
   "relations": {
-    "topic":{
-      "type":"belongsTo",
+    "topic": {
+      "type": "belongsTo",
       "model": "topic",
-      "foreignKey":"topicId"
+      "foreignKey": "topicId"
     },
-    "replay":{
+    "replay": {
       "type": "hasOne",
       "model": "user",
       "foreignKey": "replayId"
     },
-    "praise":{
-      "type":"hasMany",
-      "model": "user",
-      "foreignKey": "praiseIds"
-    },
-    "blame":{
-      "type":"hasMany",
-      "model": "user",
-      "foreignKey": "blameIds"
+    "assess":{
+      "type": "hasMany",
+      "model": "assessTopicComment",
+      "foreignKey": "assessIds"
     },
     "author": {
       "type": "belongsTo",

@@ -1,0 +1,38 @@
+{
+  "name": "assessArgueComment",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "assess": {
+      "type": "string",
+      "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "author": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "authorId"
+    },
+    "comment": {
+      "type": "belongsTo",
+      "model":"argueComment",
+      "foreignKey": "commentId"
+    },
+    "argue": {
+      "type": "belongsTo",
+      "model": "argue",
+      "foreignKey": "argueId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

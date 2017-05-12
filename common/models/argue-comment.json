@@ -10,12 +10,12 @@
       "type": "string",
       "required": true
     },
-    "point":{
-      "type":"string",
+    "point": {
+      "type": "string",
       "required": true
     },
-    "rank":{
-      "type":"number",
+    "rank": {
+      "type": "number",
       "required": true,
       "default": 0
     },
@@ -26,27 +26,22 @@
   },
   "validations": [],
   "relations": {
-    "argue":{
-      "type":"belongsTo",
+    "argue": {
+      "type": "belongsTo",
       "model": "argue",
-      "foreignKey":"argueId"
-    },
-    "praise":{
-      "type":"hasMany",
-      "model": "user",
-      "foreignKey": "praiseIds"
-    },
-    "blame":{
-      "type":"hasMany",
-      "model": "user",
-      "foreignKey": "blameIds"
+      "foreignKey": "argueId"
     },
     "author": {
       "type": "belongsTo",
       "model": "user",
       "foreignKey": "authorId"
     },
-    "replay":{
+    "assess":{
+      "type": "hasMany",
+      "model": "assessArgueComment",
+      "foreignKey": "assessIds"
+    },
+    "replay": {
       "type": "hasOne",
       "model": "user",
       "foreignKey": "replayId"

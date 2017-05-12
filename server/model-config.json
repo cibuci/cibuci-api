@@ -65,5 +65,13 @@
   "topicComment": {
     "dataSource": "db",
     "public": true
+  },
+  "assessArgueComment": {
+    "dataSource": "db",
+    "public": true
+  },
+  "assessTopicComment": {
+    "dataSource": "db",
+    "public": true
   }
 }

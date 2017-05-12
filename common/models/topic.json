@@ -17,20 +17,20 @@
     "content": {
       "type": "string"
     },
-    "commentsCount":{
+    "commentsCount": {
       "type": "number",
       "required": true,
       "default": 0
     },
-    "lastReplyAt":{
+    "lastReplyAt": {
       "type": "date"
     },
-    "rank":{
-      "type":"number",
+    "rank": {
+      "type": "number",
       "required": true,
       "default": 0
     },
-    "mark":{
+    "mark": {
       "type": "string"
     },
     "createdAt": {
@@ -45,8 +45,8 @@
       "model": "user",
       "foreignKey": "authorId"
     },
-    "comments":{
-      "type" : "hasMany",
+    "comments": {
+      "type": "hasMany",
       "model": "topicComment",
       "foreignKey": "commentIds"
     }
