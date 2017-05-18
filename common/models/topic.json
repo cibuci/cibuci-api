@@ -51,7 +51,7 @@
       "foreignKey": "authorId"
     },
     "lastReplyer": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "user",
       "foreignKey": "lastReplyerId"
     },
