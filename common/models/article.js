@@ -10,8 +10,11 @@ module.exports = function(Article) {
     next();
   });
   Article.afterRemote('findById',function(context, artice, next){
-  	artice.readCount+=1;
-  	artice.save();
-  	next();
+    if (!artice) return next();
+
+  	artice.readCount = artice.readCount ? artice.readCount + 1 : 1;
+  	artice.save(function(err) {
+      next(err);
+    });
   });
 };

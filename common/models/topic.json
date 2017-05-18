@@ -22,6 +22,11 @@
       "required": true,
       "default": 0
     },
+    "readCount": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
     "lastReplyAt": {
       "type": "date"
     },
