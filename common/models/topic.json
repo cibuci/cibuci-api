@@ -45,6 +45,11 @@
       "model": "user",
       "foreignKey": "authorId"
     },
+    "lastReplyer": {
+      "type": "hasOne",
+      "model": "user",
+      "foreignKey": "lastReplyerId"
+    },
     "comments": {
       "type": "hasMany",
       "model": "topicComment",

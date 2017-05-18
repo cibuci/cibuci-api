@@ -15,7 +15,12 @@ module.exports = function(Topiccomment) {
 	Topiccomment.afterRemote('create',function(context, comment, next){
 		var Topic = app.models.Topic;
 		Topic.findById(comment.topicId,{},function(err, topic){
-			topic.updateAttributes({'lastReplyAt':comment.createdAt,'commentsCount':topic.commentsCount+1},function(err,instance){
+			var modify = {
+				lastReplyAt: comment.createdAt,
+				lastReplyerId: comment.authorId,
+				commentsCount: topic.commentsCount + 1,
+			};
+			topic.updateAttributes(modify,function(err,instance){
 				next();
 			});
 		});

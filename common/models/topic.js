@@ -5,6 +5,7 @@ module.exports = function(Topic) {
     console.log('> Topic.beforeRemote triggered');
 
     context.args.data.createdAt = Date.now();
+    context.args.date.lastReplyAt = Date.now();
     context.args.data.authorId = context.req.accessToken.userId;
 
     next();
