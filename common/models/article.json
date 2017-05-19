@@ -25,9 +25,9 @@
       "required": true,
       "default": 0
     },
-    "published": {
-      "type": "boolean",
-      "default": false
+    "status": {
+      "type": "string",
+      "default": "draft"
     },
     "sourceName": {
       "type": "string"
