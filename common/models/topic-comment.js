@@ -25,4 +25,24 @@ module.exports = function(Topiccomment) {
 			});
 		});
 	});
+
+	Topiccomment.observe('before delete',function(ctx, next){
+	  console.log('> Topiccomment.afterRemote delete triggered');
+
+		Topiccomment.findById(ctx.where.id, {}, function(err, comment) {
+			if(comment && comment.topicId) {
+				var Topic = ctx.Model.app.models.Topic;
+				Topic.findById(comment.topicId,{},function(err, topic){
+					var modify = {
+						commentsCount: (topic.commentsCount > 0 ? topic.commentsCount - 1 : 0),
+					};
+					topic.updateAttributes(modify,function(err,instance){
+						next();
+					});
+				});
+			} else {
+				next();
+			}
+		});
+	});
 };
