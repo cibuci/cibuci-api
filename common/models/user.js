@@ -12,8 +12,6 @@ var url = require('url');
 
 function replaceHost(options, callback) {
   var verifyLink = url.parse(options.verifyHref);
-  verifyLink.host = 'api.cibuci.com';
-  verifyLink.protocol = 'https';
   verifyLink.port = null;
   var newLink = url.format(verifyLink);
   options.verifyHref = newLink;
@@ -34,6 +32,8 @@ module.exports = function(User) {
       template: templatePath,
       templateFn: replaceHost,
       redirect: 'http://cibuci.com/verified',
+      protocol: 'https',
+      host: 'api.cibuci.com',
     });
   };
 
@@ -53,6 +53,8 @@ module.exports = function(User) {
       templateFn: replaceHost,
       redirect: 'http://cibuci.com/verified',
       user: user,
+      protocol: 'https',
+      host: 'api.cibuci.com',
     };
 
     user.verify(options, function(err, response) {
