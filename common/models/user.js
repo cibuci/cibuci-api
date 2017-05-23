@@ -8,6 +8,18 @@ var config = require('../../server/config.json');
 var path = require('path');
 var fs = require('fs');
 var ejs = require('ejs');
+var url = require('url');
+
+function replaceHost(options, callback) {
+  var verifyLink = url.parse(options.verifyHref);
+  verifyLink.host = 'api.cibuci.com';
+  verifyLink.protocol = 'https';
+  verifyLink.port = null;
+  var newLink = url.format(verifyLink);
+  options.verifyHref = newLink;
+
+  ejs.renderFile(options.template, options, callback);
+}
 
 module.exports = function(User) {
   // set default verify options.
@@ -20,6 +32,7 @@ module.exports = function(User) {
       from: 'no-reply@cibuci.com',
       subject: '激活账号 - 辞不辞',
       template: templatePath,
+      templateFn: replaceHost,
       redirect: 'http://cibuci.com/verified',
     });
   };
@@ -37,6 +50,7 @@ module.exports = function(User) {
       from: 'no-reply@cibuci.com',
       subject: '激活账号 - 辞不辞',
       template: templatePath,
+      templateFn: replaceHost,
       redirect: 'http://cibuci.com/verified',
       user: user,
     };
@@ -54,11 +68,11 @@ module.exports = function(User) {
 
   // send password reset link when requested
   User.on('resetPasswordRequest', function(info) {
-    var url = `http://cibuci.com/reset-password/${info.accessToken.id}`;
+    var uri = `http://cibuci.com/reset-password/${info.accessToken.id}`;
     var templatePath =
       path.resolve(__dirname, '../../server/views/action-password-reset.ejs');
     var template = fs.readFileSync(templatePath, 'utf-8');
-    var html = ejs.render(template, {url: url});
+    var html = ejs.render(template, {url: uri});
 
     User.app.models.Email.send({
       to: info.email,
