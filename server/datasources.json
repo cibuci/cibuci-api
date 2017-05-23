@@ -19,8 +19,8 @@
           "rejectUnauthorized": false
         },
         "auth": {
-          "user": "aaa",
-          "pass": "bbb"
+          "user": "${MAILGUN_USER}",
+          "pass": "${MAILGUN_PASS}"
         }
       }
     ]

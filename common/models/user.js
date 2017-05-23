@@ -6,54 +6,68 @@
 
 var config = require('../../server/config.json');
 var path = require('path');
+var fs = require('fs');
+var ejs = require('ejs');
 
 module.exports = function(User) {
+  // set default verify options.
+  User.getVerifyOptions = function() {
+    const base = User.base.getVerifyOptions();
+    var templatePath =
+      path.resolve(__dirname, '../../server/views/action-register.ejs');
+    return Object.assign({}, base, {
+      type: 'email',
+      from: 'no-reply@cibuci.com',
+      subject: '激活账号 - 辞不辞',
+      template: templatePath,
+      redirect: 'http://cibuci.com/verified',
+    });
+  };
+
   // send verification email after registration
-  // User.afterRemote('create', function(context, user, next) {
-  //   console.log('> user.afterRemote triggered');
-  //
-  //   var options = {
-  //     type: 'email',
-  //     to: user.email,
-  //     from: 'noreply@loopback.com',
-  //     subject: 'Thanks for registering.',
-  //     template: path.resolve(__dirname, '../../server/views/verify.ejs'),
-  //     redirect: '/verified',
-  //     user: user
-  //   };
-  //
-  //   user.verify(options, function(err, response) {
-  //     if (err) {
-  //       User.deleteById(user.id);
-  //       return next(err);
-  //     }
-  //
-  //     console.log('> verification email sent:', response);
-  //
-  //     context.res.render('response', {
-  //       title: 'Signed up successfully',
-  //       content: 'Please check your email and click on the verification link ' +
-  //           'before logging in.',
-  //       redirectTo: '/',
-  //       redirectToLinkText: 'Log in'
-  //     });
-  //   });
-  // });
+  User.afterRemote('create', function(context, user, next) {
+    console.log('> user.afterRemote create triggered');
+
+    var templatePath =
+      path.resolve(__dirname, '../../server/views/action-register.ejs');
+
+    var options = {
+      type: 'email',
+      to: user.email,
+      from: 'no-reply@cibuci.com',
+      subject: '激活账号 - 辞不辞',
+      template: templatePath,
+      redirect: 'http://cibuci.com/verified',
+      user: user,
+    };
+
+    user.verify(options, function(err, response) {
+      if (err) {
+        User.deleteById(user.id);
+        return next(err);
+      }
+
+      console.log('> verification email sent:', response);
+      next();
+    });
+  });
 
   // send password reset link when requested
-  // User.on('resetPasswordRequest', function(info) {
-  //   var url = 'http://' + config.host + ':' + config.port + '/reset-password';
-  //   var html = 'Click <a href="' + url + '?access_token=' +
-  //       info.accessToken.id + '">here</a> to reset your password';
-  //
-  //   User.app.models.Email.send({
-  //     to: info.email,
-  //     from: info.email,
-  //     subject: 'Password reset',
-  //     html: html
-  //   }, function(err) {
-  //     if (err) return console.log('> error sending password reset email');
-  //     console.log('> sending password reset email to:', info.email);
-  //   });
-  // });
+  User.on('resetPasswordRequest', function(info) {
+    var url = `http://cibuci.com/reset-password/${info.accessToken.id}`;
+    var templatePath =
+      path.resolve(__dirname, '../../server/views/action-password-reset.ejs');
+    var template = fs.readFileSync(templatePath, 'utf-8');
+    var html = ejs.render(template, {url: url});
+
+    User.app.models.Email.send({
+      to: info.email,
+      from: 'no-reply@cibuci.com',
+      subject: '重置密码 - 辞不辞',
+      html: html,
+    }, function(err) {
+      if (err) return console.log('> error sending password reset email');
+      console.log('> sending password reset email to:', info.email);
+    });
+  });
 };

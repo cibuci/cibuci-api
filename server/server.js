@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config();
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
@@ -7,7 +8,7 @@ var app = module.exports = loopback();
 
 var remotes = app.remotes();
 
-var util_router = require('./routers/util.js');
+var utilRouter = require('./routers/util.js');
 
 // Set X-Total-Count for all search requests
 remotes.after('*.find', function(ctx, next) {
@@ -30,7 +31,7 @@ app.use('/robots.txt', function(req, res, next) {
   res.send('Disallow: /');
 });
 
-app.use('/util',util_router.router);
+app.use('/util', utilRouter.router);
 
 app.start = function() {
   // start the web server
