@@ -55,7 +55,7 @@
     "dataSource": "db",
     "public": true,
     "options": {
-      "emailVerificationRequired": false
+      "emailVerificationRequired": true,
     }
   },
   "argueComment": {
