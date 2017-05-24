@@ -23,6 +23,22 @@ function replaceHost(options, callback) {
 
 module.exports = function(User) {
   // set default verify options.
+
+  User.disableRemoteMethod('__get__accessTokens', false);
+  User.disableRemoteMethod('__create__accessTokens', false);
+  User.disableRemoteMethod('__delete__accessTokens', false);
+  User.disableRemoteMethod('__count__accessTokens', false);
+  User.disableRemoteMethod('__destroyById__accessTokens', false);
+  User.disableRemoteMethod('__updateById__accessTokens', false);
+  User.disableRemoteMethod('__findById__accessTokens', false);
+
+  /*User.once('attached', function (Uer) {
+    var methods = User.sharedClass.methods();
+    for (var i = methods.length - 1; i >= 0; i--) {
+      console.log(methods[i].name);
+    }
+  });*/
+
   User.getVerifyOptions = function() {
     const base = User.base.getVerifyOptions();
     var templatePath =

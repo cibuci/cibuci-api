@@ -17,6 +17,7 @@
       "type": "date"
     }
   },
+  "hidden":["accessTokens"],
   "validations": [],
   "relations": {
     "authors": {
