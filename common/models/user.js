@@ -25,6 +25,8 @@ module.exports = function(User) {
   // set default verify options.
   User.getVerifyOptions = function() {
     const base = User.base.getVerifyOptions();
+    console.log(base);
+    console.log('--------->');
     var templatePath =
       path.resolve(__dirname, '../../server/views/action-register.ejs');
     return Object.assign({}, base, {
