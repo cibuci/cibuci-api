@@ -37,6 +37,12 @@ module.exports = function(User) {
     });
   };
 
+  User.beforeRemote('create', function(context, user, next) {
+    console.log('> User.beforeRemote triggered');
+    context.args.data.createdAt = Date.now();
+    next();
+  });
+
   // send verification email after registration
   User.afterRemote('create', function(context, user, next) {
     console.log('> user.afterRemote create triggered');
