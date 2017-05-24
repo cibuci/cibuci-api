@@ -24,13 +24,14 @@ function replaceHost(options, callback) {
 module.exports = function(User) {
   // set default verify options.
 
-  User.disableRemoteMethod('__get__accessTokens', false);
-  User.disableRemoteMethod('__create__accessTokens', false);
-  User.disableRemoteMethod('__delete__accessTokens', false);
-  User.disableRemoteMethod('__count__accessTokens', false);
-  User.disableRemoteMethod('__destroyById__accessTokens', false);
-  User.disableRemoteMethod('__updateById__accessTokens', false);
-  User.disableRemoteMethod('__findById__accessTokens', false);
+  User.disableRemoteMethodByName('prototype.__count__accessTokens');
+  User.disableRemoteMethodByName('prototype.__create__accessTokens');
+  User.disableRemoteMethodByName('prototype.__delete__accessTokens');
+  User.disableRemoteMethodByName('prototype.__destroyById__accessTokens');
+  User.disableRemoteMethodByName('prototype.__findById__accessTokens');
+  User.disableRemoteMethodByName('prototype.__get__accessTokens');
+  User.disableRemoteMethodByName('prototype.__updateById__accessTokens');
+
 
   /*User.once('attached', function (Uer) {
     var methods = User.sharedClass.methods();
