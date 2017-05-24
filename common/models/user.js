@@ -25,8 +25,6 @@ module.exports = function(User) {
   // set default verify options.
   User.getVerifyOptions = function() {
     const base = User.base.getVerifyOptions();
-    console.log(base);
-    console.log('--------->');
     var templatePath =
       path.resolve(__dirname, '../../server/views/action-register.ejs');
     var options = Object.assign({}, base, {
@@ -37,7 +35,6 @@ module.exports = function(User) {
       templateFn: replaceHost,
       redirect: 'http://cibuci.com/verified',
     });
-    console.log(options);
     return options;
   };
 
