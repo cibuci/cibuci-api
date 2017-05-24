@@ -29,7 +29,7 @@ module.exports = function(User) {
     console.log('--------->');
     var templatePath =
       path.resolve(__dirname, '../../server/views/action-register.ejs');
-    return Object.assign({}, base, {
+    var options = Object.assign({}, base, {
       type: 'email',
       from: 'no-reply@cibuci.com',
       subject: '激活账号 - 辞不辞',
@@ -37,6 +37,8 @@ module.exports = function(User) {
       templateFn: replaceHost,
       redirect: 'http://cibuci.com/verified',
     });
+    console.log(options);
+    return options;
   };
 
   User.beforeRemote('create', function(context, user, next) {
